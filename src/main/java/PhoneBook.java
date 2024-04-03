@@ -4,7 +4,7 @@ import java.util.Map;
 public class PhoneBook {
     private final Map<String, String> phoneBook = new HashMap<>();
     public int add(String name, String phoneNumber) {
-
-        return 0;
+        phoneBook.putIfAbsent(name, phoneNumber);
+        return phoneBook.size();
     }
 }
