@@ -19,4 +19,8 @@ public class PhoneBook {
 
         return result.isEmpty() ? null : result;
     }
+
+    public String findByName(String name) {
+        return null;
+    }
 }
