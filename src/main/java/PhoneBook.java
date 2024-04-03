@@ -4,6 +4,10 @@ import java.util.TreeMap;
 
 public class PhoneBook {
     private final Map<String, String> phoneBook = new TreeMap<>();
+
+    public int getPhoneBookSize() {
+        return phoneBook.size();
+    }
     public int add(String name, String phoneNumber) {
         phoneBook.putIfAbsent(name, phoneNumber);
         return phoneBook.size();
@@ -22,5 +26,11 @@ public class PhoneBook {
 
     public String findByName(String name) {
         return phoneBook.get(name);
+    }
+
+    public void printAllNames() {
+        phoneBook
+                .keySet()
+                .forEach(System.out::println);
     }
 }

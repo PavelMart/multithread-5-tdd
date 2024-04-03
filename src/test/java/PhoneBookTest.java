@@ -10,6 +10,7 @@ public class PhoneBookTest {
     @BeforeEach
     public void initializePhoneBook() {
         phoneBook = new PhoneBook();
+        phoneBook.add("Nikita", "124456345");
         phoneBook.add("Bob", "0987654321");
         phoneBook.add("Alice", "1234567890");
     }
@@ -17,7 +18,7 @@ public class PhoneBookTest {
     public void addTest_Simple() {
         final String name = "name";
         final String phoneNumber = "77777777777";
-        final int expected = 3;
+        final int expected = phoneBook.getPhoneBookSize() + 1;
         final int result = phoneBook.add(name, phoneNumber);
         Assertions.assertEquals(expected, result);
     }
@@ -27,7 +28,7 @@ public class PhoneBookTest {
         String name1 = "name1";
         String name2 = "name2";
         final String phoneNumber = "77777777777";
-        final int expected = 4;
+        final int expected = phoneBook.getPhoneBookSize() + 2;
         phoneBook.add(name1, phoneNumber);
         final int result = phoneBook.add(name2, phoneNumber);
         Assertions.assertEquals(expected, result);
@@ -38,7 +39,7 @@ public class PhoneBookTest {
         String name1 = "name1";
         String name2 = "name1";
         final String phoneNumber = "12345";
-        final int expected = 3;
+        final int expected = phoneBook.getPhoneBookSize() + 1;
         phoneBook.add(name1, phoneNumber);
         final int result = phoneBook.add(name2, phoneNumber);
         Assertions.assertEquals(expected, result);
@@ -85,5 +86,10 @@ public class PhoneBookTest {
         String result = phoneBook.findByName("NOT_A_NAME");
 
         Assertions.assertNull(result);
+    }
+
+    @Test
+    public void printAllNames() {
+        phoneBook.printAllNames();
     }
 }
